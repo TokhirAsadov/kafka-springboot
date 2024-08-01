@@ -15,17 +15,26 @@ public class KafkaMessagePublisher {
     private KafkaTemplate<String, Object> kafkaTemplate;
 
     public void sendMessageToTopic(String message){
-        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("kafka-demo1", message);
-        future.whenComplete((result, ex) -> {
-            if (ex == null) {
-                System.out.println("Sent message=[" + message +
-                        "] with offset=[" + result.getRecordMetadata().offset() + "]");
-            }
-            else {
-                System.out.println("Unable to send message=["+
-                        message+"] due to : " + ex.getMessage());
-            }
-        });
+//        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("kafka-topic", message);
+//        CompletableFuture<SendResult<String, Object>> future = kafkaTemplate.send("kafka-topic",3,null, message);//sending specific partition
+//        future.whenComplete((result, ex) -> {
+//            if (ex == null) {
+//                System.out.println("Sent message=[" + message +
+//                        "] with offset=[" + result.getRecordMetadata().offset() + "]");
+//            }
+//            else {
+//                System.out.println("Unable to send message=["+
+//                        message+"] due to : " + ex.getMessage());
+//            }
+//        });
+
+        kafkaTemplate.send("kafka-topic1",0,null, "salom");
+        kafkaTemplate.send("kafka-topic1",1,null, "alik");
+        kafkaTemplate.send("kafka-topic1",2,null, "java-");
+        kafkaTemplate.send("kafka-topic1",2,null, "spring-");
+        kafkaTemplate.send("kafka-topic1",2,null, "docker-");
+        kafkaTemplate.send("kafka-topic1",3,null, "kubernetes");
+        kafkaTemplate.send("kafka-topic1",4,null, "kafka");
     }
 
     public void sendEventToTopic(Customer customer){
