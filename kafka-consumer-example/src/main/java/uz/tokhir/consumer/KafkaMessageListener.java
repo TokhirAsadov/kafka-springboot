@@ -12,10 +12,10 @@ public class KafkaMessageListener {
 
     Logger logger = LoggerFactory.getLogger(KafkaMessageListener.class);
 
-//    @KafkaListener(topics = "kafka-topic",groupId = "kafka-group1")
-//    public void consumeEvent(Customer customer){
-//        logger.info("consumer1 consume the event -> {}",customer.toString());
-//    }
+    @KafkaListener(topics = "kafka-demo1",groupId = "kafka-group1")
+    public void consumeEvent(Customer customer){
+        logger.info("consumer1 consume the event -> {}",customer.toString());
+    }
 
 
     //consume data from specific partition
