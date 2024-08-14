@@ -12,17 +12,17 @@ public class KafkaMessageListener {
 
     Logger logger = LoggerFactory.getLogger(KafkaMessageListener.class);
 
-    @KafkaListener(topics = "kafka-demo1",groupId = "kafka-group1")
+    @KafkaListener(topics = "kafka-test",groupId = "kafka-test-group")
     public void consumeEvent(Customer customer){
         logger.info("consumer1 consume the event -> {}",customer.toString());
     }
 
 
     //consume data from specific partition
-    @KafkaListener(topics = "kafka-topic1",groupId = "kafka-group1",topicPartitions = {@TopicPartition(topic = "kafka-topic1",partitions = {"2"})})
-    public void consumeEvent(String customer){
-        logger.info("consumer1 consume the event -> {}",customer.toString());
-    }
+//    @KafkaListener(topics = "kafka-topic1",groupId = "kafka-group1",topicPartitions = {@TopicPartition(topic = "kafka-topic1",partitions = {"2"})})
+//    public void consumeEvent(String customer){
+//        logger.info("consumer1 consume the event -> {}",customer.toString());
+//    }
 
 //    @KafkaListener(topics = "my-first-topic",groupId = "mf-group-new2")
 //    public void consume2(String message){
